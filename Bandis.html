@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bandis' Home Tuitions | Personal Mentorship</title>
+    <style>
+        /* Global Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: #2d3748;
+            background-color: #fff;
+            line-height: 1.6;
+        }
+
+        /* Navbar Styling */
+        header {
+            background-color: #ffffff;
+            padding: 15px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo-area {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-main {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1a365d;
+        }
+
+        .logo-sub {
+            font-size: 11px;
+            color: #718096;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-top: 2px;
+        }
+
+        nav a {
+            color: #4a5568;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #1a365d;
+        }
+
+        .enroll-btn {
+            background-color: #2b6cb0;
+            color: white;
+            padding: 8px 22px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+
+        .enroll-btn:hover {
+            background-color: #1a365d;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 140px 8% 80px 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #fff;
+        }
+
+        .hero-text {
+            flex: 1;
+            max-width: 550px;
+            padding-right: 40px;
+        }
+
+        .hero-tag {
+            font-size: 13px;
+            color: #718096;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: 46px;
+            color: #1a365d;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero h1 span {
+            color: #e53e3e;
+            position: relative;
+        }
+
+        .hero p {
+            font-size: 16px;
+            color: #4a5568;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .btn-dark {
+            background-color: #1a365d;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .btn-light {
+            color: #1a365d;
+            padding: 12px 24px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 20px;
+        }
+
+        .stat-item h3 {
+            font-size: 24px;
+            color: #1a365d;
+        }
+
+        .stat-item p {
+            font-size: 12px;
+            color: #718096;
+            margin: 0;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        /* Section Global Settings */
+        section.content-section {
+            padding: 80px 8%;
+        }
+
+        .section-header {
+            margin-bottom: 40px;
+        }
+
+        .section-tag {
+            font-size: 12px;
+            color: #718096;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .section-header h2 {
+            font-size: 28px;
+            color: #1a365d;
+        }
+
+        .section-header p {
+            color: #718096;
+            max-width: 600px;
+            margin-top: 5px;
+        }
+
+        /* Grid Frameworks */
+        .grid-2x2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .grid-4x4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        /* Programs Cards */
+        .program-card {
+            background: #f7fafc;
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #edf2f7;
+        }
+
+        .program-card .tag {
+            font-size: 11px;
+            background: #edf2f7;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-weight: 600;
+            color: #4a5568;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .program-card h3 {
+            color: #1a365d;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .program-card p {
+            font-size: 14px;
+            color: #718096;
+            margin-bottom: 15px;
+        }
+
+        .program-card ul {
+            list-style: none;
+            font-size: 14px;
+            color: #4a5568;
+        }
+
+        .program-card ul li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .program-card ul li::before {
+            content: "•";
+            color: #e53e3e;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Language Blocks */
+        .lang-card {
+            background: #ffffff;
+            padding: 20px;
+            border-left: 3px solid #1a365d;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .lang-card h4 {
+            color: #1a365d;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .lang-card p {
+            font-size: 13px;
+            color: #718096;
+        }
+
+        /* Faculty Cards */
+        .faculty-card {
+            background: #fff;
+            padding: 20px;
+            border: 1px solid #edf2f7;
+            border-radius: 6px;
+            text-align: left;
+        }
+
+        .faculty-avatar {
+            width: 45px;
+            height: 45px;
+            background: #1a365d;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .faculty-card h4 {
+            color: #1a365d;
+            font-size: 16px;
+        }
+
+        .faculty-card .sub {
+            font-size: 11px;
+            color: #e53e3e;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .faculty-card p {
+            font-size: 13px;
+            color: #4a5568;
+        }
+
+        /* Why Us Block Styles */
+        .why-card {
+            padding: 20px 0;
+        }
+
+        .why-card h4 {
+            color: #1a365d;
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .why-card p {
+            font-size: 14px;
+            color: #636e72;
+        }
+
+        /* Contact Section split style */
+        .contact-container {
+            display: flex;
+            background-color: #1a365d;
+            color: white;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .contact-left {
+            flex: 1.2;
+            padding: 60px;
+        }
+
+        .contact-left h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .contact-left p {
+            color: #a0aec0;
+            font-size: 15px;
+        }
+
+        .contact-right {
+            flex: 0.8;
+            background: #ffffff;
+            color: #333;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-field {
+            margin-bottom: 20px;
+        }
+
+        .contact-field label {
+            font-size: 12px;
+            color: #718096;
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .contact-field .val {
+            font-size: 18px;
+            color: #1a365d;
+            font-weight: 700;
+        }
+
+        .submit-btn {
+            background: #1a365d;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            width: 100%;
+            font-size: 14px;
+        }
+
+        /* Footer */
+        footer {
+            background: #f7fafc;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #a0aec0;
+            border-top: 1px solid #edf2f7;
+        }
+
+        /* Responsive Setup */
+        @media (max-width: 768px) {
+            .hero { flex-direction: column; text-align: center; padding-top: 100px; }
+            .hero-text { padding-right: 0; margin-bottom: 40px; }
+            .hero-buttons, .hero-stats { justify-content: center; }
+            .grid-2x2, .grid-4x4 { grid-template-columns: 1fr; }
+            .contact-container { flex-direction: column; }
+            header nav { display: none; } /* Simplicity helper for mobile */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-area">
+            <span class="logo-main">Bandi's Home Tuitions</span>
+            <span class="logo-sub">IPE · JEE · NEET · UPSC</span>
+        </div>
+        <nav>
+            <a href="#programs">Programs</a>
+            <a href="#languages">Languages</a>
+            <a href="#faculty">Faculty</a>
+            <a href="#why-us">Why us</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <a href="#contact" class="enroll-btn">Enroll</a>
+    </header>
+
+    <section class="hero">
+        <div class="hero-text">
+            <div class="hero-tag">Admissions open · 2026 Batch</div>
+            <h1>Personal mentorship for every <span>aspirant</span> at home.</h1>
+            <p>From intermediate boards to JEE, NEET and UPSC — we pair every student with experienced faculty who teach in Telugu, English, Hindi and Sanskrit.</p>
+            <div class="hero-buttons">
+                <a href="#programs" class="btn-dark">Explore programs</a>
+                <a href="#faculty" class="btn-light">Meet our faculty →</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <h3>1,200+</h3>
+                    <p>Students Mentored</p>
+                </div>
+                <div class="stat-item">
+                    <h3>22 yrs</h3>
+                    <p>Of teaching legacy</p>
+                </div>
+                <div class="stat-item">
+                    <h3>4</h3>
+                    <p>Languages of Instruction</p>
+                </div>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&q=80&w=600" alt="Tutoring Session">
+        </div>
+    </section>
+
+    <section id="programs" class="content-section" style="background-color: #ffffff;">
+        <div class="section-header">
+            <div class="section-tag">Academic Programs</div>
+            <h2>Coaching that meets every milestone</h2>
+            <p>Structured courses for board exams, national entrances and civil services taught by subject specialists.</p>
+        </div>
+        <div class="grid-2x2">
+            <div class="program-card">
+                <span class="tag">Intermediate</span>
+                <h3>IPE — MPC & BiPC</h3>
+                <p>Board-aligned coaching for First and Second Year Intermediate with rigorous practice, weekly tests and concept-first teaching.</p>
+                <ul>
+                    <li>Chapter-wise problem sets</li>
+                    <li>Weekend grand tests</li>
+                    <li>Doubt clearance every session</li>
+                </ul>
+            </div>
+            <div class="program-card">
+                <span class="tag">Engineering</span>
+                <h3>JEE Mains & Advanced</h3>
+                <p>Structured PCM coaching that builds problem-solving stamina — from NCERT mastery to advanced PYQs.</p>
+                <ul>
+                    <li>Topic + Mock test architecture</li>
+                    <li>Shortcut & trick library</li>
+                    <li>Rank-focused mentoring</li>
+                </ul>
+            </div>
+            <div class="program-card">
+                <span class="tag">Medical</span>
+                <h3>NEET — Physics, Chemistry, Biology</h3>
+                <p>Concept clarity in Biology, application in Chemistry, and accuracy in Physics — calibrated to the NEET pattern.</p>
+                <ul>
+                    <li>NCERT line-by-line coverage</li>
+                    <li>Diagram & terminology drills</li>
+                    <li>All-India test series</li>
+                </ul>
+            </div>
+            <div class="program-card">
+                <span class="tag">Civil Services</span>
+                <h3>UPSC Career Guidance</h3>
+                <p>Mentorship by serving UPSC aspirants — strategy, optional selection, answer writing and interview preparation.</p>
+                <ul>
+                    <li>Prelims + Mains roadmap</li>
+                    <li>Daily Current Affairs</li>
+                    <li>Essay & answer evaluation</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="languages" class="content-section" style="background-color: #f7fafc;">
+        <div class="section-header">
+            <div class="section-tag">Languages of Instruction</div>
+            <h2>Fluency in four classical and modern languages</h2>
+            <p>Our faculty teach concepts and second-language papers in the medium most natural to each student.</p>
+        </div>
+        <div class="grid-4x4">
+            <div class="lang-card">
+                <h4>తెలుగు</h4>
+                <p>Classical literature, grammar, composition</p>
+            </div>
+            <div class="lang-card">
+                <h4>English</h4>
+                <p>Communication, Literature & Competitive English</p>
+            </div>
+            <div class="lang-card">
+                <h4>हिन्दी</h4>
+                <p>Vyakaran, gadya-padya, essay writing</p>
+            </div>
+            <div class="lang-card">
+                <h4>संस्कृतम्</h4>
+                <p>Shloka recitation, vyakaran, board syllabus</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="faculty" class="content-section">
+        <div class="section-header">
+            <div class="section-tag">Our Faculty</div>
+            <h2>Mentors with depth — and a track record</h2>
+            <p>Every educator at Bandi's brings years of focused teaching in their specialization. UPSC guidance is led by serving aspirants who have cleared Mains.</p>
+        </div>
+        <div class="grid-4x4">
+            <div class="faculty-card">
+                <div class="faculty-avatar">SR</div>
+                <h4>Sri Ramesh Bandi</h4>
+                <div class="sub">Expertise: IPE / JEE / NEET</div>
+                <p>Calculus, Coordinate Geometry, Vectors</p>
+            </div>
+            <div class="faculty-card">
+                <div class="faculty-avatar">LP</div>
+                <h4>Dr. Lakshmi Prasanna</h4>
+                <div class="sub">Expertise: NEET</div>
+                <p>Human Physiology, Plant Ecology, Botany</p>
+            </div>
+            <div class="faculty-card">
+                <div class="faculty-avatar">AR</div>
+                <h4>Mr. Arjun Reddy</h4>
+                <div class="sub">Expertise: IPE / JEE / NEET</div>
+                <p>Electrostatics, Mechanics, Modern Physics</p>
+            </div>
+            <div class="faculty-card">
+                <div class="faculty-avatar">SR</div>
+                <h4>Smt. Sravani Rao</h4>
+                <div class="sub">Expertise: IPE / JEE / NEET</div>
+                <p>Organic, Physical & Inorganic Chemistry</p>
+            </div>
+            <div class="faculty-card">
+                <div class="faculty-avatar">SV</div>
+                <h4>Shri Venkat Sharma</h4>
+                <div class="sub">Expertise: Languages</div>
+                <p>Sanskrit Literature, Vedic Poetry, Grammar</p>
+            </div>
+            <div class="faculty-card">
+                <div class="faculty-avatar">AD</div>
+                <h4>Smt. Anuradha Devi</h4>
+                <div class="sub">Expertise: Languages</div>
+                <p>Telugu Sahityam, Grammar & Essay metrics</p>
+            </div>
+            <div class="faculty-card">
+                <div class="faculty-avatar">KK</div>
+                <h4>Mr. Kiran Kumar</h4>
+                <div class="sub">Expertise: UPSC Guidance</div>
+                <p>Indian Polity, Modern History & GS Strategy</p>
+            </div>
+            <div class="faculty-card">
+                <div class="faculty-avatar">SP</div>
+                <h4>Smt. Padmaja Garu</h4>
+                <div class="sub">Expertise: Foundation</div>
+                <p>High school Mathematics, Mental Ability</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="why-us" class="content-section" style="background-color: #f7fafc;">
+        <div class="section-header">
+            <div class="section-tag">Why Bandi's</div>
+            <h2>A home for serious learners</h2>
+        </div>
+        <div class="grid-2x2">
+            <div class="why-card">
+                <h4>1-to-1 & micro-batches</h4>
+                <p>Tuitions delivered at home or in small focused groups — never crowded.</p>
+            </div>
+            <div class="why-card">
+                <h4>Track record of results</h4>
+                <p>Consistent IPE distinctions, top JEE & NEET qualifiers, and progressive UPSC metrics.</p>
+            </div>
+            <div class="why-card">
+                <h4>Parent-teacher loop</h4>
+                <p>Monthly progress reports and direct access to faculty insights.</p>
+            </div>
+            <div class="why-card">
+                <h4>Cultural depth</h4>
+                <p>Classical languages taught with reverence — Sanskrit and Telugu by experienced pandits.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="content-section">
+        <div class="contact-container">
+            <div class="contact-left">
+                <h2>Begin your journey with a free demo class.</h2>
+                <p>Tell us your goal — IPE, JEE, NEET or UPSC — and the language you're most comfortable in. We'll match you with the right mentor.</p>
+            </div>
+            <div class="contact-right">
+                <div class="contact-field">
+                    <label>Call or WhatsApp</label>
+                    <div class="val">+91 00000 00000</div>
+                </div>
+                <div class="contact-field">
+                    <label>Email</label>
+                    <div class="val">hello@bandistuitions.in</div>
+                </div>
+                <button class="submit-btn" onclick="alert('Demo Request Triggered!')">Request a callback</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div>&copy; 2026 Bandi's Home Tuitions. All rights reserved.</div>
+        <div>Built for Academic Excellence</div>
+    </footer>
+
+</body>
+</html>
